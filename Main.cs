@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Incrementer {
-    public partial class mainForm : Form {
-        public mainForm() {
+    public partial class MainForm : Form {
+        public MainForm() {
             InitializeComponent();
         }
         private void MainForm_Load(object sender, EventArgs e) {
@@ -62,9 +62,18 @@ namespace Incrementer {
             }
 
             //ややこしいが、最終行で改行しないようにしてます
-            targetTextBox.Text = result.Remove(result.Length - 2, 2).ToString();
+            result.Remove(result.Length - 2, 2);
+
             if (copyTrueToolStripMenuItem.Checked)
                 Clipboard.SetText(result.ToString());
+
+            if (outputMainFormToolStripMenuItem.Checked)
+                targetTextBox.Text = result.ToString();
+            else {
+                ResultForm f = new ResultForm(result.ToString());
+                f.ShowDialog(this);
+                f.Dispose();
+            }
         }
 
         private void outputMainFormToolStripMenuItem_Click(object sender, EventArgs e) {

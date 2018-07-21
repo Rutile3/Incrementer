@@ -1,5 +1,5 @@
 ﻿namespace Incrementer {
-    partial class mainForm {
+    partial class MainForm {
         /// <summary>
         /// 必要なデザイナー変数です。
         /// </summary>
