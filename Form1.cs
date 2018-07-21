@@ -63,6 +63,28 @@ namespace Incrementer {
 
             //ややこしいが、最終行で改行しないようにしてます
             targetTextBox.Text = result.Remove(result.Length - 2, 2).ToString();
+            if (copyTrueToolStripMenuItem.Checked)
+                Clipboard.SetText(result.ToString());
+        }
+
+        private void outputMainFormToolStripMenuItem_Click(object sender, EventArgs e) {
+            outputMainFormToolStripMenuItem.Checked = true;
+            outputResultFormToolStripMenuItem.Checked = false;
+        }
+
+        private void outputResultFormToolStripMenuItem_Click(object sender, EventArgs e) {
+            outputMainFormToolStripMenuItem.Checked = false;
+            outputResultFormToolStripMenuItem.Checked = true;
+        }
+
+        private void copyTrueToolStripMenuItem_Click(object sender, EventArgs e) {
+            copyTrueToolStripMenuItem.Checked = true;
+            copyFalseToolStripMenuItem.Checked = false;
+        }
+
+        private void copyFalseToolStripMenuItem_Click(object sender, EventArgs e) {
+            copyTrueToolStripMenuItem.Checked = false;
+            copyFalseToolStripMenuItem.Checked = true;
         }
     }
 }
